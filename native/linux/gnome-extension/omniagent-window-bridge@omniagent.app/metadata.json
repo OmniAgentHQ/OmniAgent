@@ -1,0 +1,8 @@
+{
+  "uuid": "omniagent-window-bridge@omniagent.app",
+  "name": "OmniAgent Window Bridge",
+  "description": "Lets OmniAgent list open windows and bring one to the front. Wayland gives applications no way to do either, by design, so OmniAgent's desktop automation cannot target a specific window without this. It exposes nothing else: no window contents, no input, no screen capture.",
+  "shell-version": ["45", "46", "47", "48", "49", "50"],
+  "url": "https://omniagenthq.com",
+  "session-modes": ["user"]
+}

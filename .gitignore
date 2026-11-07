@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-electron
+release
+Installers
+/*.exe
+/*.dmg
+/OmniAgent-*.sh
+build/python-runtime
+build/OmniAgentHelper
+native/windows/.venv
+native/windows/.pyinstaller
+.DS_Store
+.claude
+*.log
+*.tsbuildinfo

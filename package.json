@@ -1,0 +1,71 @@
+{
+  "name": "omniagent-core",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ChatGPT and Claude on the same team. Tag them in one message and they build it together.",
+  "author": "OmniAgent",
+  "license": "MIT",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "electron:dev": "tsc -p electron/tsconfig.json && concurrently -k \"npm:dev\" \"wait-on tcp:127.0.0.1:5173 && electron . --dev\"",
+    "start": "npm run build && electron .",
+    "build": "tsc -b && vite build && tsc -p electron/tsconfig.json",
+    "rebuild:native": "node scripts/rebuild-native.mjs",
+    "build:runtime": "node scripts/build-python-runtime.mjs",
+    "build:icon": "node scripts/build-icon.mjs",
+    "build:icns": "node scripts/build-icns.mjs",
+    "build:helper": "node scripts/build-helper.mjs",
+    "package:core:mac": "npm run build:icns && npm run build:helper && taskpolicy -b nice -n 15 node scripts/package-core-mac.mjs",
+    "package:core:linux": "node scripts/package-core-linux.mjs",
+    "package:core:win": "node scripts/package-windows.mjs",
+    "postinstall": "node scripts/setup-native.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/martian-mono": "^5.3.0",
+    "adm-zip": "^0.5.16",
+    "better-sqlite3": "12.11.1",
+    "lucide-react": "^0.468.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.10.38",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "yauzl": "^3.4.0",
+    "yazl": "^3.3.1",
+    "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-code": "2.1.220",
+    "@electron/rebuild": "4.2.0",
+    "@openai/codex": "0.145.0",
+    "@types/adm-zip": "^0.5.7",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.16",
+    "@types/react-dom": "^18.3.5",
+    "@types/yauzl": "^3.4.0",
+    "@types/yazl": "^3.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "electron": "43.4.1",
+    "electron-builder": "26.15.3",
+    "png-to-ico": "^3.0.2",
+    "typescript": "5.9.3",
+    "vite": "6.4.3",
+    "wait-on": "^8.0.1"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true,
+    "esbuild@0.25.12": true,
+    "fsevents@2.3.3": true,
+    "@anthropic-ai/claude-code@2.1.220": true,
+    "electron@43.4.1": true,
+    "electron-winstaller": false
+  },
+  "homepage": "https://omniagenthq.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OmniAgentHQ/OmniAgent.git"
+  }
+}

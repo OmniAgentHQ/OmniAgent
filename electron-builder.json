@@ -1,0 +1,107 @@
+{
+  "appId": "app.omniagent.core",
+  "productName": "OmniAgent Core",
+  "afterPack": "scripts/mac-after-pack.cjs",
+  "directories": {
+    "output": "release/core"
+  },
+  "files": [
+    "dist/**/*",
+    "dist-electron/**/*",
+    "package.json",
+    "node_modules/better-sqlite3/**/*",
+    "!node_modules/better-sqlite3/{bin,deps,src}/**",
+    "!node_modules/better-sqlite3/build/**",
+    "node_modules/better-sqlite3/build/Release/better_sqlite3.node",
+    "!node_modules/@napi-rs/canvas-linux-x64-musl/**",
+    "node_modules/bindings/**/*",
+    "node_modules/file-uri-to-path/**/*",
+    "node_modules/adm-zip/**/*",
+    "node_modules/pdf-lib/**/*",
+    "node_modules/@pdf-lib/**/*",
+    "node_modules/pako/**/*",
+    "node_modules/tslib/**/*",
+    "node_modules/zod/**/*",
+    "node_modules/pdfjs-dist/**/*",
+    "node_modules/yauzl/**/*",
+    "node_modules/yazl/**/*",
+    "node_modules/pend/**/*",
+    "node_modules/buffer-crc32/**/*",
+    "!**/README*",
+    "!**/readme*",
+    "!**/Readme*",
+    "!**/CHANGELOG*",
+    "!**/changelog*",
+    "!**/HISTORY.md",
+    "!**/CONTRIBUTING*",
+    "!**/*.map"
+  ],
+  "asarUnpack": [
+    "node_modules/better-sqlite3/**/*",
+    "dist-electron/mcpHostBridge.js"
+  ],
+  "extraResources": [
+    {
+      "from": "build/icon.png",
+      "to": "icon.png"
+    },
+    {
+      "from": "build/icon.ico",
+      "to": "icon.ico"
+    }
+  ],
+  "win": {
+    "icon": "build/icon.ico",
+    "executableName": "OmniAgent Core",
+    "target": "nsis",
+    "extraResources": [
+      {
+        "from": "electron/input-helper.ps1",
+        "to": "input-helper.ps1"
+      },
+      {
+        "from": "build/python-runtime/OmniAgent.Runtime.exe",
+        "to": "OmniAgent.Runtime.exe"
+      }
+    ]
+  },
+  "mac": {
+    "icon": "build/icon.icns",
+    "category": "public.app-category.productivity",
+    "identity": null,
+    "hardenedRuntime": false,
+    "extraResources": [
+      {
+        "from": "build/OmniAgentHelper",
+        "to": "OmniAgentHelper"
+      }
+    ]
+  },
+  "linux": {
+    "icon": "build/icon.png",
+    "category": "Utility;Development",
+    "executableName": "omniagent-core",
+    "target": "deb",
+    "extraResources": [
+      {
+        "from": "native/linux/omniagent_helper.py",
+        "to": "omniagent_helper.py"
+      }
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": "always",
+    "createStartMenuShortcut": true,
+    "runAfterFinish": true
+  },
+  "extraMetadata": {
+    "desktopName": "omniagent-core.desktop"
+  },
+  "dmg": {
+    "title": "OmniAgent Core",
+    "artifactName": "OmniAgent-Core-${arch}.${ext}",
+    "writeUpdateInfo": false
+  }
+}
